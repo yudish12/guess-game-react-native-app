@@ -10,6 +10,11 @@ const App = () => {
   const [isGameOver, setIsGameOver] = useState(true);
   const [roundNumber, setRoundNumber] = useState(null);
 
+  const restartFunction = () => {
+    setIsGameOver(true);
+    setUserNumber(null);
+  };
+
   const pickedNumber = x => {
     setUserNumber(x);
     setIsGameOver(false);
@@ -33,7 +38,13 @@ const App = () => {
     );
   }
   if (isGameOver && userNumber) {
-    screen = <GameoverScreen totalRounds={roundNumber} target={userNumber} />;
+    screen = (
+      <GameoverScreen
+        restartFunction={restartFunction}
+        totalRounds={roundNumber}
+        target={userNumber}
+      />
+    );
   }
 
   return <>{screen}</>;

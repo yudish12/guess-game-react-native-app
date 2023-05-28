@@ -2,8 +2,9 @@ import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {ImageBackground} from 'react-native';
+import PrimaryButton from '../components/PrimaryButton';
 
-const GameoverScreen = ({totalRounds, target}) => {
+const GameoverScreen = ({totalRounds, target, restartFunction}) => {
   return (
     <LinearGradient colors={['#4e0329', '#ddb52f']} style={{flex: 1}}>
       <ImageBackground
@@ -26,6 +27,9 @@ const GameoverScreen = ({totalRounds, target}) => {
               Your Phone Required {totalRounds} Rounds to guess the number{' '}
               {target}.
             </Text>
+          </View>
+          <View>
+            <PrimaryButton pressHandler={restartFunction} val="Restart" />
           </View>
         </View>
       </ImageBackground>
@@ -88,9 +92,7 @@ const styles = StyleSheet.create({
     fontWeight: '900',
   },
   msgcont: {
-    flex: 1,
     padding: 20,
-
     alignItems: 'center',
   },
 });
